@@ -1,0 +1,18 @@
+.subject-block{
+    border: 2px solid #0583D2;
+    padding-bottom: 7px;
+    border-radius: 3px;
+}
+
+.btn{
+    background-color: #0583D2;
+    color:white;
+}
+
+.btn:hover{
+    border: 2px solid #0583D2;
+}
+
+.btn:focus{
+    border: 2px solid #0583D2;
+}
