@@ -4,10 +4,16 @@ import Select from 'react-select';
 import { languages, lifeOrientation, mathematics, other } from '../resources/subjects';
 import getMarks from '../resources/marks';
 import { useState } from 'react';
+import { validate } from '../resources/validation';
+import Score from '../components/score';
+import { calculateAps } from '../resources/calculateAps';
+import { scores } from '../resources/testResults';
+import { institutions } from '../resources/institutions';
 
 export default function Home(){
 
-    const [apsData] = useState([]); 
+    const [apsData] = useState([]);
+    const [success, setSuccess] = useState(false);
 
     function handleSubject(id, studentSubject){
         
@@ -33,7 +39,14 @@ export default function Home(){
 
     }
 
-    return (
+    function checkResults(scores = []){
+        if(validate(scores)){
+            setSuccess(true);
+        }
+    }
+
+       if(!success){
+        return (
         <div className="container mt-5 pt-5">
             <div className="row g-3">
                 <div className="col-lg-12">
@@ -144,10 +157,24 @@ export default function Home(){
                 </div>
 
                 <div className="col text-center">
-                    <button name="submit" type="button" className="btn mb-3">Calculate aps</button>
+                    <button type="button"
+                     className="btn mb-3"
+                     onClick={() => /*checkResults(apsData)*/ checkResults(scores)}
+                     >Calculate aps</button>
                 </div>
 
             </div>
         </div>
     )
+}
+else{
+    return(
+        <div className='container mt-5 pt-5'>
+            {institutions.map((institution)=>{
+                return <Score key={institution.id} institution={institution} aps={calculateAps(scores, institution.name)} />
+            })}
+        </div>
+    )
+}
+
 }
