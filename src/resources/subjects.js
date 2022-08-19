@@ -1,15 +1,28 @@
 
-export const languages = [
-    {value:"English", label:"English"},
-    {value:"Ndebele", label:"Ndebele"},
-    {value:"Northern Sotho", label:"Northern Sotho"},
-    {value:"Southern Sotho", label:"Southern Sotho"},
-    {value:"Swazi", label:"Swazi"},
-    {value:"Tsonga", label:"Tsonga"},
-    {value:"Tswana", label:"Tswana"},
-    {value:"Venda", label:"Venda"},
-    {value:"Xhosa", label:"Xhosa"},
-    {value:"Zulu", label:"Zulu"},
+export const homeLanguages = [
+    {value:"English", label:"English Home Language"},
+    {value:"Ndebele", label:"Ndebele Home Language"},
+    {value:"Northern Sotho", label:"Northern Sotho Home Language"},
+    {value:"Southern Sotho", label:"Southern Sotho Home Language"},
+    {value:"Swazi", label:"Swazi Home Language"},
+    {value:"Tsonga", label:"Tsonga Home Language"},
+    {value:"Tswana", label:"Tswana Home Language"},
+    {value:"Venda", label:"Venda Home Language"},
+    {value:"Xhosa", label:"Xhosa Home Language"},
+    {value:"Zulu", label:"Zulu Home Language"},
+]
+
+export const additionalLanguages = [
+    {value:"English", label:"English First Additional Language"},
+    {value:"Ndebele", label:"Ndebele First Additional Language"},
+    {value:"Northern Sotho", label:"Northern Sotho First Additional Language"},
+    {value:"Southern Sotho", label:"Southern Sotho First Additional Language"},
+    {value:"Swazi", label:"Swazi First Additional Language"},
+    {value:"Tsonga", label:"Tsonga First Additional Language"},
+    {value:"Tswana", label:"Tswana First Additional Language"},
+    {value:"Venda", label:"Venda First Additional Language"},
+    {value:"Xhosa", label:"Xhosa First Additional Language"},
+    {value:"Zulu", label:"Zulu First Additional Language"},
 ]
 
 export const mathematics = [

@@ -1,19 +1,21 @@
 import '../style/home.css'; 
 import Select from 'react-select';
 
-import { languages, lifeOrientation, mathematics, other } from '../resources/subjects';
+import { homeLanguages, additionalLanguages, lifeOrientation, mathematics, other } from '../resources/subjects';
 import getMarks from '../resources/marks';
 import { useState } from 'react';
 import { validate } from '../resources/validation';
 import Score from '../components/score';
 import { calculateAps } from '../resources/calculateAps';
-import { scores } from '../resources/testResults';
 import { institutions } from '../resources/institutions';
+import Footer from '../components/footer';
+import Content from '../components/content';
 
 export default function Home(){
 
-    const [apsData] = useState([]);
+    const [apsData, setApsData] = useState([]);
     const [success, setSuccess] = useState(false);
+    const [error, setError] = useState(false);
 
     function handleSubject(id, studentSubject){
         
@@ -41,25 +43,42 @@ export default function Home(){
 
     function checkResults(scores = []){
         if(validate(scores)){
-            setSuccess(true);
+            setSuccess(true);       
         }
+        else{
+            setError(true);
+        }
+    }
+
+    function clear(){
+        setError(false);
+        setSuccess(false);
+        setApsData([]);
     }
 
        if(!success){
         return (
-        <div className="container mt-5 pt-5">
-            <div className="row g-3">
+            
+        <><div className="container mt-5 pt-5">
+            <h3 className='text-center heading'>All in one Admission point score calculator(APS)</h3>
+            <p className="text-center header">All in one Aps calculator, enter subjects and percentage you received to calculate your aps score for multiple Universities all at once.</p>
+            {error ? <div class="alert alert-danger" role="alert">
+                <p className="text-center"> Select all subjects and marks  |
+                    Make sure there are no duplicates  | 
+                    If you cannot solve the problem email info@apsgrade.com</p>
+            </div> : " "}
+            <div className="row g-3 mt-2">
                 <div className="col-lg-12">
                     <div className="row g-2 subject-block">
                     <div className="col-lg-6">
-                    <Select options={languages} 
-                    defaultValue={{value:"select first language", label:"select first language"}}
+                    <Select options={homeLanguages} 
+                    defaultValue={{value:"select first language", label:"select home language"}}
                     onChange={value => handleSubject(0, value.value)}
                     />
                 </div>
                 <div className="col-lg-6">
                 <Select options={getMarks(100)} 
-                defaultValue={{value:"select your mark (%)", label:"select your mark (%)"}}
+                defaultValue={{value:"select your mark (%)", label:"select your mark (0-100%)"}}
                 onChange={value => handleMark(0, value.value)}
                 />
                 </div>
@@ -69,13 +88,13 @@ export default function Home(){
                 <div className="col-lg-12">
                     <div className="row g-2 subject-block">
                     <div className="col-lg-6">
-                    <Select options={languages} 
-                    defaultValue={{value:"select second language", label:"select second language"}}
+                    <Select options={additionalLanguages} 
+                    defaultValue={{value:"select second language", label:"select first additional language"}}
                     onChange={value => handleSubject(1, value.value)}/>
                 </div>
                 <div className="col-lg-6">
                 <Select options={getMarks(100)} 
-                defaultValue={{value:"select your mark (%)", label:"select your mark (%)"}}
+                defaultValue={{value:"select your mark (%)", label:"select your mark (0-100%)"}}
                 onChange={value => handleMark(1, value.value)}/>
                 </div>
                     </div>
@@ -90,7 +109,7 @@ export default function Home(){
                 </div>
                 <div className="col-lg-6">
                 <Select options={getMarks(100)} 
-                defaultValue={{value:"select your mark (%)", label:"select your mark (%)"}}
+                defaultValue={{value:"select your mark (%)", label:"select your mark (0-100%)"}}
                 onChange={value => handleMark(2, value.value)}/>
                 </div>
                     </div>
@@ -105,7 +124,7 @@ export default function Home(){
                 </div>
                 <div className="col-lg-6">
                 <Select options={getMarks(100)} 
-                defaultValue={{value:"select your mark (%)", label:"select your mark (%)"}}
+                defaultValue={{value:"select your mark (%)", label:"select your mark (0-100%)"}}
                 onChange={value => handleMark(3, value.value)}/>
                 </div>
                     </div>
@@ -120,7 +139,7 @@ export default function Home(){
                 </div>
                 <div className="col-lg-6">
                 <Select options={getMarks(100)} 
-                defaultValue={{value:"select your mark (%)", label:"select your mark (%)"}} 
+                defaultValue={{value:"select your mark (%)", label:"select your mark (0-100%)"}} 
                 onChange={value => handleMark(4, value.value)}/>
                 </div>
                     </div>
@@ -135,7 +154,7 @@ export default function Home(){
                 </div>
                 <div className="col-lg-6">
                 <Select options={getMarks(100)} 
-                defaultValue={{value:"select your mark (%)", label:"select your mark (%)"}}
+                defaultValue={{value:"select your mark (%)", label:"select your mark (0-100%)"}}
                 onChange={value => handleMark(5, value.value)} />
                 </div>
                     </div>
@@ -150,7 +169,7 @@ export default function Home(){
                 </div>
                 <div className="col-lg-6">
                 <Select options={getMarks(100)} 
-                defaultValue={{value:"select your mark (%)", label:"select your mark (%)"}} 
+                defaultValue={{value:"select your mark (%)", label:"select your mark (0-100%)"}} 
                 onChange={value => handleMark(6, value.value)}/>
                 </div>
                     </div>
@@ -159,21 +178,31 @@ export default function Home(){
                 <div className="col text-center">
                     <button type="button"
                      className="btn mb-3"
-                     onClick={() => /*checkResults(apsData)*/ checkResults(scores)}
+                     onClick={() => checkResults(apsData)}
                      >Calculate aps</button>
                 </div>
 
             </div>
+            
         </div>
+        <Content/>
+        <Footer />
+        </>
     )
 }
 else{
     return(
+        <>
         <div className='container mt-5 pt-5'>
+            <h5><i className="bi bi-arrow-left-square-fill"
+            onClick={() => clear() }>
+                </i> Back</h5>
             {institutions.map((institution)=>{
-                return <Score key={institution.id} institution={institution} aps={calculateAps(scores, institution.name)} />
+                return <Score key={institution.id} institution={institution} aps={calculateAps(apsData, institution.name)} />
             })}
         </div>
+        <Footer />
+        </>
     )
 }
 

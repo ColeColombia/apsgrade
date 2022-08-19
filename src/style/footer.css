@@ -1,0 +1,58 @@
+
+.footer{
+    background-color: black;
+    height: 10vh;
+    color: white;
+    text-align: center;
+  }
+  
+  .about-section {
+    padding-top: 10rem;}
+  
+  .about-section p {
+    margin-bottom: 5rem;
+  }
+  
+  .contact-section {
+    padding-top: 5rem;
+    background-color: black;
+  }
+  
+  .contact-info ol {
+    padding: 0;
+    margin: 0;
+  }
+   .contact-info ol li {
+    padding: 0 0 0 40px;
+    margin: 0 0 30px 0;
+    list-style: none;
+    position: relative;
+  }
+  
+  .contact-info ol a{
+    text-decoration: none;
+    color:white;
+  }
+  
+  .contact-section .social {
+    margin-top: 5rem;
+  }
+  .contact-section .social a {
+    text-align: center;
+    height: 3rem;
+    width: 3rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 100%;
+    line-height: 3rem;
+    color: rgba(255, 255, 255, 0.3);
+  }
+  .contact-section .social a:hover {
+    color: rgba(255, 255, 255, 0.5);
+  }
+  .contact-section .social a:active {
+    color: #fff;
+  }
+  
+  .footer {
+    padding: 5rem 0;
+  }

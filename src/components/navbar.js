@@ -10,9 +10,7 @@ export default function NavBar(){
     </button>
     <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
       <div className="navbar-nav">
-        <a className="nav-link" href="/">contact</a>
-        <a className="nav-link" href="/">about</a>
-        <a className="nav-link" href="/">help</a>
+        <a className="nav-link" href="#contact">contact</a>
       </div>
     </div>
   </div>

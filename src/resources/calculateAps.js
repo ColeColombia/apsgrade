@@ -35,7 +35,7 @@ const witsAps = (apsData=[]) => {
 
     apsData.forEach((subject)=>{
 
-        if(subject.subject.toUpperCase() === "MATHEMATICS" || subject.subject.toUpperCase() === "ENGLISH"){
+        if(subject.subject.toUpperCase() === "MATHEMATICS" || subject.subject.toUpperCase() === "MATHEMATICAL LITERACY" || subject.subject.toUpperCase() === "ENGLISH HOME LANGUAGE" || subject.subject.toUpperCase() === "ENGLISH FIRST ADDITIONAL LANGUAGE"){
             if(convertToLevel(subject.mark) > 4){
                 aps += convertToLevel(subject.mark) + 2;  
             }//end if
@@ -96,8 +96,34 @@ const rhodesAps = (apsData=[]) =>{
         }//end if
 
         else{
-            if(subject.mark > 40){
+            if(subject.mark >= 40){
                 aps += subject.mark * 0.1;
+            }
+        }//end else
+
+    });
+
+    return aps.toFixed(1);
+
+}
+
+const ufsAps = (apsData=[]) =>{
+
+    let aps = 0;
+
+    apsData.forEach((subject)=>{
+
+        if(subject.subject.toUpperCase() === "LIFE ORIENTATION"){
+            
+            if(subject.mark >= 60){
+                aps += 1;
+            }
+
+        }//end if
+
+        else{
+            if(subject.mark >= 30){
+                aps += convertToLevel(subject.mark);
             }
         }//end else
 
@@ -107,12 +133,72 @@ const rhodesAps = (apsData=[]) =>{
 
 }
 
+const cutAps = (apsData=[]) =>{
+
+    let aps = 0;
+
+    apsData.forEach((subject)=>{
+
+        if(subject.subject.toUpperCase() === "LIFE ORIENTATION"){
+            aps += 1;
+        }//end if
+
+        else{
+            aps += convertToLevel(subject.mark);
+        }//end else
+
+    });
+
+    return aps;
+
+}
+
+const uomAps = (apsData=[]) =>{
+
+    let aps = 0;
+
+    apsData.forEach((subject)=>{
+
+        if(subject.subject.toUpperCase() === "LIFE ORIENTATION"){
+            aps += convertToLevel(subject.mark) / 2;
+        }//end if
+
+        else{
+            aps += convertToLevel(subject.mark);
+        }//end else
+
+    });
+
+    return aps.toFixed(1);
+
+}
+
+const wsuAps = (apsData=[]) =>{
+
+    let aps = 0;
+
+    apsData.forEach((subject)=>{
+
+        if(subject.subject.toUpperCase() === "LIFE ORIENTATION"){
+            aps += 0;
+        }//end if
+
+        else{
+            aps += subject.mark * 0.1;
+        }//end else
+
+    });
+
+    return aps.toFixed(1);
+
+}
+
 const uwcAps = (apsData=[]) => {
     let aps = 0;
 
     apsData.forEach((subject)=>{
 
-        if(subject.subject.toUpperCase() === "MATHEMATICS" || subject.subject.toUpperCase() === "ENGLISH"){
+        if(subject.subject.toUpperCase() === "MATHEMATICS" || subject.subject.toUpperCase() === "MATHEMATICAL LITERACY" || subject.subject.toUpperCase() === "ENGLISH HOME LANGUAGE" || subject.subject.toUpperCase() === "ENGLISH FIRST ADDITIONAL LANGUAGE"){
             if(subject.mark >= 90 && subject.mark  < 101){
                 aps += 15;  
             }//end if
@@ -202,7 +288,189 @@ const cputAps = (apsData=[]) => {
 
     });
 
-    return aps / 10;
+    return (aps / 10).toFixed(1);
+}
+
+const mutAps = (apsData=[]) => {
+
+    let aps = 0;
+
+    apsData.forEach((subject)=>{
+
+        if(subject.subject.toUpperCase() === "LIFE ORIENTATION"){
+            aps += 0;
+        }//end if
+
+        else{    
+            if(subject.mark >= 90 && subject.mark  < 101){
+                aps += 8;  
+            }//end if
+            else if(subject.mark >= 80 && subject.mark < 90){
+                aps += 7;
+            }
+            else if(subject.mark >= 70 && subject.mark < 80){
+                aps += 6;
+            }
+            else if(subject.mark >= 60 && subject.mark < 70){
+                aps += 5;
+            }
+            else if(subject.mark >= 50 && subject.mark < 60){
+                aps += 4;
+            }
+            else if(subject.mark >= 40 && subject.mark < 50){
+                aps += 3;
+            }
+        }//end else
+
+    });
+
+    return aps;
+}
+
+const spuAps = (apsData=[]) => {
+
+    let aps = 0;
+
+    apsData.forEach((subject)=>{
+
+        if(subject.subject.toUpperCase() === "MATHEMATICS" || subject.subject.toUpperCase() === "MATHEMATICAL LITERACY" || subject.subject.includes("Home Language")){
+
+            if(subject.mark >= 90 && subject.mark  < 101){
+                aps += 10;  
+            }//end if
+            else if(subject.mark >= 80 && subject.mark < 90){
+                aps += 9;
+            }
+            else if(subject.mark >= 70 && subject.mark < 80){
+                aps += 8;
+            }
+            else if(subject.mark >= 60 && subject.mark < 70){
+                aps += 7;
+            }
+            else if(subject.mark >= 50 && subject.mark < 60){
+                aps += 5;
+            }
+            else if(subject.mark >= 40 && subject.mark < 50){
+                aps += 4;
+            }
+            
+            if(subject.mark <= 39){
+                aps += 0;
+            }
+
+        }//end maths and english if
+
+        else{    
+            
+            if(subject.mark >= 90 && subject.mark  < 101){
+                aps += 8;  
+            }//end if
+            else if(subject.mark >= 80 && subject.mark < 90){
+                aps += 7;
+            }
+            else if(subject.mark >= 70 && subject.mark < 80){
+                aps += 6;
+            }
+            else if(subject.mark >= 60 && subject.mark < 70){
+                aps += 5;
+            }
+            else if(subject.mark >= 50 && subject.mark < 60){
+                aps += 4;
+            }
+            else if(subject.mark >= 40 && subject.mark < 50){
+                aps += 3;
+            }
+            
+            if(subject.mark <= 39){
+                aps += 0;
+            }
+        }//end else
+
+        if(subject.subject.toUpperCase() === "LIFE ORIENTATION"){
+
+            if(subject.mark >= 90 && subject.mark  < 101){
+                aps += 4;  
+            }//end if
+            else if(subject.mark >= 80 && subject.mark < 90){
+                aps += 3;
+            }
+            else if(subject.mark >= 70 && subject.mark < 80){
+                aps += 2;
+            }
+            else if(subject.mark >= 60 && subject.mark < 70){
+                aps += 1;
+            }
+
+        }//end if
+
+    });
+
+    return aps;
+}
+
+const vutAps = (apsData=[]) => {
+
+    let aps = 0;
+
+    apsData.forEach((subject)=>{
+
+        if(subject.subject.toUpperCase() === "MATHEMATICS" || subject.subject.toUpperCase() === "MATHEMATICAL LITERACY"){
+
+            if(subject.mark >= 80 && subject.mark < 101){
+                aps += 10;
+            }
+            else if(subject.mark >= 70 && subject.mark < 80){
+                aps += 8;
+            }
+            else if(subject.mark >= 60 && subject.mark < 70){
+                aps += 6;
+            }
+            else if(subject.mark >= 50 && subject.mark < 60){
+                aps += 4;
+            }
+            else if(subject.mark >= 40 && subject.mark < 50){
+                aps += 3;
+            }
+
+            else if(subject.mark >= 30 && subject.mark < 40){
+                aps += 2;
+            }
+
+        }//end maths and english if
+
+        if(subject.subject.toUpperCase() === "LIFE ORIENTATION"){
+
+            aps += 0;
+
+        }//end if
+
+        else{
+
+            if(subject.mark >= 80 && subject.mark < 101){
+                aps += 9;
+            }
+            else if(subject.mark >= 70 && subject.mark < 80){
+                aps += 7;
+            }
+            else if(subject.mark >= 60 && subject.mark < 70){
+                aps += 5;
+            }
+            else if(subject.mark >= 50 && subject.mark < 60){
+                aps += 4;
+            }
+            else if(subject.mark >= 40 && subject.mark < 50){
+                aps += 3;
+            }
+
+            else if(subject.mark >= 30 && subject.mark < 40){
+                aps += 2;
+            }
+
+        }//end maths and english if
+
+    });
+
+    return aps;
 }
 
 const nmuAps = (apsData=[]) => {
@@ -217,6 +485,27 @@ const nmuAps = (apsData=[]) => {
 
         else{    
             aps += subject.mark;    
+        }//end else
+
+    });
+
+    return aps;
+}
+
+const tutAps = (apsData=[]) => {
+
+    let aps = 0;
+
+    apsData.forEach((subject)=>{
+
+        if(subject.subject.toUpperCase() === "LIFE ORIENTATION"){
+            aps += 0;
+        }//end if
+
+        else{
+            if(subject.mark >= 30){  
+                aps += convertToLevel(subject.mark);
+            }    
         }//end else
 
     });
@@ -270,4 +559,70 @@ export function calculateAps(apsData=[], institution){
         {
             return nmuAps(apsData);
         }//end if
+
+        if(institution.toUpperCase() === "Central University of Technology".toUpperCase())
+        {
+            return cutAps(apsData);
+        }//end if
+
+        if(institution.toUpperCase() === "University of the Free State".toUpperCase())
+        {
+            return ufsAps(apsData);
+        }//end if
+
+        if(institution.toUpperCase() === "University of Fort Hare".toUpperCase())
+        {
+            return sameAps(apsData);
+        }//end if
+
+        if(institution.toUpperCase() === "University of Zululand".toUpperCase())
+        {
+            return sameAps(apsData);
+        }//end if
+
+        if(institution.toUpperCase() === "University of Mpumalanga".toUpperCase())
+        {
+            return uomAps(apsData);
+        }//end if
+
+        if(institution.toUpperCase() === "Walter Sisulu University".toUpperCase())
+        {
+            return wsuAps(apsData);
+        }//end if
+
+        if(institution.toUpperCase() === "Durban University of Technology".toUpperCase())
+        {
+            return sameAps(apsData);
+        }//end if
+
+        if(institution.toUpperCase() === "Mangosuthu University of Technology".toUpperCase())
+        {
+            return mutAps(apsData);
+        }//end if
+
+        if(institution.toUpperCase() === "Sol Plaatjie University".toUpperCase())
+        {
+            return spuAps(apsData);
+        }//end if
+
+        if(institution.toUpperCase() === "Vaal University of Technology".toUpperCase())
+        {
+            return vutAps(apsData);
+        }//end if
+
+        if(institution.toUpperCase() === "University of Limpopo".toUpperCase())
+        {
+            return sameAps(apsData);
+        }//end if
+
+        if(institution.toUpperCase() === "University of Venda for Science and Technology".toUpperCase())
+        {
+            return rhodesAps(apsData);
+        }//end if
+
+        if(institution.toUpperCase() === "Tshwane University of Technology".toUpperCase())
+        {
+            return tutAps(apsData);
+        }//end if
+
 }

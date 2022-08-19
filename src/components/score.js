@@ -1,10 +1,11 @@
+import "../style/score.css";
 
 export default function Score(props){
     return (
         <div className="row intitution_details">
             <div className='col-lg-4 intitution text-center'>
             <div className='institue_name'>
-              <p>{props.institution.name}</p>
+              <h6>{props.institution.name}</h6>
             </div>
             <div className='institue_image'>
               <img src={props.institution.image} alt=''/>
@@ -16,7 +17,7 @@ export default function Score(props){
 
           <div className='col-lg-4 intitution text-center'>
             <div className='institue_name'>
-              <p>Admission Point Score(APS)</p>
+              <h6>Admission Point Score(APS)</h6>
             </div>
             <div className='institue_location'>
               <h1>{props.aps}</h1>
