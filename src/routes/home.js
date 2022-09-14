@@ -58,13 +58,13 @@ export default function Home(){
        if(!success){
         return (
 
-        <><div id="error" className="container mt-5 pt-5">
+        <><div id="aps" className="container mt-5 pt-5">
             <h3 className='text-center heading'>All in one Admission point score calculator(APS)</h3>
             <p className="text-center header">All in one APS calculator, select your 7 best subjects and percentages you received to calculate your aps score for multiple Universities in <strong>South Africa</strong> all at once.</p><br/>
             {error ? <div className="alert alert-danger" role="alert">
                 <p className="text-center"> Select all subjects and marks  |
                     Make sure there are no duplicates  |
-                    If you cannot solve the problem email info@apsgrade.com</p>
+                    If you cannot solve the problem email apscore@apsgrade.co.za</p>
             </div> : " "}
             <div className="row g-3 mt-2">
                 <div className="col-lg-12">
@@ -178,7 +178,7 @@ export default function Home(){
                     <a type="button"
                      className="btn mb-3"
                      onClick={() => checkResults(apsData)}
-                      href="#error"
+                      href="#aps"
                      role="button" >Calculate aps</a>
                 </div>
 
