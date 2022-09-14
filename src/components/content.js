@@ -6,6 +6,7 @@ export default function Content(){
         <div className="container mt-5">
             <div className="row">
                 <div className="col-lg-6">
+                    <h1 className="heading">How to use Apsgrade</h1>
                    <h5 className="heading">What is an Admission point score</h5>
                    <p className="">An admission point score known as APS is a point system
                     used by South African institutions of higher learning to admit
