@@ -9,7 +9,6 @@ import { validate } from '../resources/validation';
 import Score from '../components/score';
 import { calculateAps } from '../resources/calculateAps';
 import { institutions } from '../resources/institutions';
-import Footer from '../components/footer';
 
 export default function Home(){
 
@@ -200,7 +199,6 @@ else{
                 return <Score key={institution.id} institution={institution} aps={calculateAps(apsData, institution.name)} />
             })}
         </div>
-        <Footer />
         </>
     )
 }
