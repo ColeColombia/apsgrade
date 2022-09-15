@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { HashRouter, Routes, Route } from 'react-router-dom';
 import App from './routes/App';
 import reportWebVitals from './reportWebVitals';
 import Home from './routes/home';
@@ -14,7 +14,7 @@ import HowToUse from './routes/how';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
         <Route path="/" element={<App />} >
         <Route index element={<Home/>} />
@@ -26,7 +26,7 @@ root.render(
         <Route path="how-to-use" element={<HowToUse />} />
         </Route>
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   </React.StrictMode>
 );
 
