@@ -1,5 +1,6 @@
 import '../style/home.css';
 import Select from 'react-select';
+import { HashLink as Link } from 'react-router-hash-link';
 
 import { homeLanguages, additionalLanguages, lifeOrientation, mathematics, other } from '../resources/subjects';
 import getMarks from '../resources/marks';
@@ -175,11 +176,11 @@ export default function Home(){
                 </div>
 
                 <div className="col text-center">
-                    <a type="button"
+                    <Link  type="button"
                      className="btn mb-3"
                      onClick={() => checkResults(apsData)}
-                      href="#aps"
-                     role="button" >Calculate aps</a>
+                     to="/#aps"
+                     role="button" >Calculate aps</Link >
                 </div>
 
             </div>
