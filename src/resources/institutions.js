@@ -25,7 +25,7 @@ export const institutions = [
      image: "img/nwu.jpg", date: "September 30 2022",
       link:"http://distance.nwu.ac.za/apply-online"},
       {id:9,name:"Nelson Mandela University", location:"Eastern Cape and Western Cape",
-     image: "img/nmu.PNG", date: "30 June 2022",
+     image: "img/nmu.png", date: "30 June 2022",
       link:"https://applyonline.mandela.ac.za/"},
       {id:10,name:"Central University of Technology", location:"Free State",
      image: "img/cut.jpg", date: "September 30 2022",
